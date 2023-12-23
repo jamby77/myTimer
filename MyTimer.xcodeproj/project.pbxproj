@@ -7,29 +7,29 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6F7134282B376DD900036496 /* StopwatchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F7134272B376DD900036496 /* StopwatchViewModel.swift */; };
 		8671BFF32B307D8C00CE39D1 /* MyTimerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8671BFF22B307D8C00CE39D1 /* MyTimerApp.swift */; };
 		8671BFF52B307D8C00CE39D1 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8671BFF42B307D8C00CE39D1 /* ContentView.swift */; };
 		8671BFF72B307D8F00CE39D1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8671BFF62B307D8F00CE39D1 /* Assets.xcassets */; };
 		8671BFFA2B307D8F00CE39D1 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8671BFF92B307D8F00CE39D1 /* Preview Assets.xcassets */; };
-		8671C0012B307DBD00CE39D1 /* TimerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8671C0002B307DBD00CE39D1 /* TimerView.swift */; };
 		86CB0B5C2B31B00A0013EB39 /* TimePickerPartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86CB0B5B2B31B00A0013EB39 /* TimePickerPartView.swift */; };
 		86CB0B5F2B31BDD50013EB39 /* TimerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86CB0B5E2B31BDD50013EB39 /* TimerViewModel.swift */; };
-		86CB0B612B31BE430013EB39 /* TimerPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86CB0B602B31BE430013EB39 /* TimerPickerView.swift */; };
+		86CB0B612B31BE430013EB39 /* TimerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86CB0B602B31BE430013EB39 /* TimerView.swift */; };
 		86CB0B642B31C16D0013EB39 /* ButtonStyles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86CB0B632B31C16D0013EB39 /* ButtonStyles.swift */; };
 		86CB0B662B32F9B90013EB39 /* TimerProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86CB0B652B32F9B90013EB39 /* TimerProgressView.swift */; };
 		86CB0B692B32FACD0013EB39 /* Float+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86CB0B682B32FACD0013EB39 /* Float+Extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		6F7134272B376DD900036496 /* StopwatchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StopwatchViewModel.swift; sourceTree = "<group>"; };
 		8671BFEF2B307D8C00CE39D1 /* MyTimer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyTimer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8671BFF22B307D8C00CE39D1 /* MyTimerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTimerApp.swift; sourceTree = "<group>"; };
 		8671BFF42B307D8C00CE39D1 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		8671BFF62B307D8F00CE39D1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8671BFF92B307D8F00CE39D1 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		8671C0002B307DBD00CE39D1 /* TimerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerView.swift; sourceTree = "<group>"; };
 		86CB0B5B2B31B00A0013EB39 /* TimePickerPartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimePickerPartView.swift; sourceTree = "<group>"; };
 		86CB0B5E2B31BDD50013EB39 /* TimerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerViewModel.swift; sourceTree = "<group>"; };
-		86CB0B602B31BE430013EB39 /* TimerPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerPickerView.swift; sourceTree = "<group>"; };
+		86CB0B602B31BE430013EB39 /* TimerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerView.swift; sourceTree = "<group>"; };
 		86CB0B632B31C16D0013EB39 /* ButtonStyles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonStyles.swift; sourceTree = "<group>"; };
 		86CB0B652B32F9B90013EB39 /* TimerProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerProgressView.swift; sourceTree = "<group>"; };
 		86CB0B682B32FACD0013EB39 /* Float+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Float+Extension.swift"; sourceTree = "<group>"; };
@@ -72,7 +72,6 @@
 				8671BFF42B307D8C00CE39D1 /* ContentView.swift */,
 				8671BFF62B307D8F00CE39D1 /* Assets.xcassets */,
 				8671BFF82B307D8F00CE39D1 /* Preview Content */,
-				8671C0002B307DBD00CE39D1 /* TimerView.swift */,
 			);
 			path = MyTimer;
 			sourceTree = "<group>";
@@ -90,7 +89,7 @@
 			children = (
 				86CB0B622B31C14F0013EB39 /* Buttons */,
 				86CB0B5B2B31B00A0013EB39 /* TimePickerPartView.swift */,
-				86CB0B602B31BE430013EB39 /* TimerPickerView.swift */,
+				86CB0B602B31BE430013EB39 /* TimerView.swift */,
 				86CB0B652B32F9B90013EB39 /* TimerProgressView.swift */,
 			);
 			path = Views;
@@ -100,6 +99,7 @@
 			isa = PBXGroup;
 			children = (
 				86CB0B5E2B31BDD50013EB39 /* TimerViewModel.swift */,
+				6F7134272B376DD900036496 /* StopwatchViewModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -190,9 +190,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				86CB0B612B31BE430013EB39 /* TimerPickerView.swift in Sources */,
+				86CB0B612B31BE430013EB39 /* TimerView.swift in Sources */,
 				86CB0B5F2B31BDD50013EB39 /* TimerViewModel.swift in Sources */,
-				8671C0012B307DBD00CE39D1 /* TimerView.swift in Sources */,
+				6F7134282B376DD900036496 /* StopwatchViewModel.swift in Sources */,
 				86CB0B692B32FACD0013EB39 /* Float+Extension.swift in Sources */,
 				86CB0B662B32F9B90013EB39 /* TimerProgressView.swift in Sources */,
 				8671BFF52B307D8C00CE39D1 /* ContentView.swift in Sources */,

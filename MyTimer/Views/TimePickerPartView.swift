@@ -38,6 +38,20 @@ struct TimePickerPartView: View {
     }
 }
 
+struct TimePickerOptions {
+    static let hoursRange = 0...99
+    static let minutesRange = 0...59
+    static let secondsRange = 0...59
+    
+    static let hrs = "hours"
+    static let min = "min"
+    static let sec = "sec"
+}
+
 #Preview {
-    TimePickerPartView(title: "Hours", range: 0...23, binding: Binding.constant(0))
+    TimePickerPartView(
+        title: "Hours",
+        range: TimePickerOptions.hoursRange,
+        binding: Binding.constant(0)
+    )
 }

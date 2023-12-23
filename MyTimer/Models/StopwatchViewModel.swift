@@ -1,13 +1,14 @@
 //
-//  TimerViewModel.swift
+//  StopwatchViewModel.swift
 //  MyTimer
 //
-//  Created by Petar Dzhambazov on 19.12.23.
+//  Created by Petar Dzhambazov on 23.12.23.
 //
 
 import Foundation
 
-enum TimerState {
+
+enum StopwatchState {
     case active
     case paused
     case resumed
@@ -15,23 +16,24 @@ enum TimerState {
     case finished
 }
 
-
-class TimerViewModel: ObservableObject {
+class StopwatchViewModel: ObservableObject {
+    @Published var selectedHoursAmount = 0
+    @Published var selectedMinutesAmount = 1
+    @Published var selectedSecondsAmount = 0
     
+    let hoursRange = 0...23
+    let minutesRange = 0...59
+    let secondsRange = 0...59
     
     // MARK: Private properties
     private var timer = Timer()
     private var totalTimeForCurrentSelection: Int {
         (selectedHoursAmount * 3600) + (selectedMinutesAmount * 60) + selectedSecondsAmount
     }
-    private var startDate: Date = Date.now
-    private var totalTime: Float = 0.0
+    
     
     // MARK: Public properties
     
-    @Published var selectedHoursAmount = 0
-    @Published var selectedMinutesAmount = 1
-    @Published var selectedSecondsAmount = 0
     // Powers the ProgressView
     @Published var secondsToCompletion: Float = 0.1
     @Published var progress: Float = 0.0
@@ -41,7 +43,9 @@ class TimerViewModel: ObservableObject {
     @Published var state: TimerState = .canceled {
         didSet {
             switch state {
-            case .canceled, .finished:
+            case .canceled:
+                fallthrough
+            case .finished:
                 // cancel timer and reset
                 timer.invalidate()
                 secondsToCompletion = 0
@@ -49,9 +53,8 @@ class TimerViewModel: ObservableObject {
                 
             case .active:
                 // start timer and set progress props
-                secondsToCompletion = Float(totalTimeForCurrentSelection)
-                totalTime = Float(totalTimeForCurrentSelection)
                 startTimer()
+                secondsToCompletion = Float(totalTimeForCurrentSelection)
                 progress = 1.0
                 
                 updateCompletionDate()
@@ -59,7 +62,6 @@ class TimerViewModel: ObservableObject {
                 // We want to pause the timer, but we
                 // don't want to change the state of our progress
                 // properties (secondsToCompletion and progress)
-                totalTime = secondsToCompletion
                 timer.invalidate()
             case .resumed:
                 // Resumes the timer
@@ -72,13 +74,10 @@ class TimerViewModel: ObservableObject {
     }
     
     private func startTimer() {
-        startDate = Date.now
         timer = Timer.scheduledTimer(withTimeInterval: 0.1, repeats: true, block: { [weak self] _ in
             guard let self else { return }
-            let diff = Float(Date.now.timeIntervalSince(startDate))
             
-//            self.secondsToCompletion -= 0.1
-            self.secondsToCompletion = self.totalTime - diff
+            self.secondsToCompletion -= 0.1
             self.progress = self.secondsToCompletion / Float(self.totalTimeForCurrentSelection)
             
             if self.secondsToCompletion < 0 {

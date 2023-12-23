@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct TimerPickerView: View {
+struct TimerView: View {
     @StateObject private var model = TimerViewModel()
     
     var controls: some View {
@@ -28,7 +28,7 @@ struct TimerPickerView: View {
                 Button("Resume") {
                     model.state = .resumed
                 }
-                .buttonStyle(PauseButtonStyle())
+                .buttonStyle(StartButtonStyle())
             case .canceled, .finished:
                 Button("Start") {
                     model.state = .active
@@ -43,25 +43,23 @@ struct TimerPickerView: View {
     var picker: some View {
         HStack {
             TimePickerPartView(
-                title: "hours",
-                range: model.hoursRange,
+                title: TimePickerOptions.hrs,
+                range: TimePickerOptions.hoursRange,
                 binding: $model.selectedHoursAmount
             )
             TimePickerPartView(
-                title: "min",
-                range: model.minutesRange,
+                title: TimePickerOptions.min,
+                range: TimePickerOptions.minutesRange,
                 binding: $model.selectedMinutesAmount
             )
             TimePickerPartView(
-                title: "sec",
-                range: model.secondsRange,
+                title: TimePickerOptions.sec,
+                range: TimePickerOptions.secondsRange,
                 binding: $model.selectedSecondsAmount
             )
         }
         .padding(32)
         .frame(width: 360, height: 255)
-        .background(.black)
-        .foregroundColor(.white)
     }
     
     var progressView: some View {
@@ -71,7 +69,9 @@ struct TimerPickerView: View {
             }
             VStack {
                 Text(model.secondsToCompletion.asTimestamp)
+                    .monospacedDigit()
                     .font(.largeTitle)
+                    .fontDesign(.monospaced)
                 HStack {
                     Image(systemName: "bell.fill")
                     Text(
@@ -79,10 +79,12 @@ struct TimerPickerView: View {
                         format: .dateTime.hour().minute()
                     )
                 }
+                .padding(.top, 5)
             }
+            .padding()
         }
-        .frame(width: 360, height: 255)
-        .padding(32)
+        .frame(width: 360, height: 360)
+        .padding()
     }
     
     var body: some View {
@@ -91,12 +93,12 @@ struct TimerPickerView: View {
                 .ignoresSafeArea()
             VStack {
                 if model.state == .canceled {
-                    picker
+//                    picker
+                    progressView
                 } else {
                     progressView
                 }
                 
-                Spacer()
                 controls
             }
             .frame(maxWidth: .infinity, maxHeight: .infinity)
@@ -106,5 +108,5 @@ struct TimerPickerView: View {
 }
 
 #Preview {
-    TimerPickerView()
+    TimerView()
 }
