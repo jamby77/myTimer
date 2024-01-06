@@ -93,8 +93,7 @@ struct TimerView: View {
                 .ignoresSafeArea()
             VStack {
                 if model.state == .canceled {
-//                    picker
-                    progressView
+                    picker
                 } else {
                     progressView
                 }
@@ -102,8 +101,8 @@ struct TimerView: View {
                 controls
             }
             .frame(maxWidth: .infinity, maxHeight: .infinity)
-            .foregroundStyle(.white)
         }
+        .foregroundStyle(.white)
     }
 }
 

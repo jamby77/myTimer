@@ -8,14 +8,6 @@
 import Foundation
 
 
-enum StopwatchState {
-    case active
-    case paused
-    case resumed
-    case canceled
-    case finished
-}
-
 class StopwatchViewModel: ObservableObject {
     @Published var selectedHoursAmount = 0
     @Published var selectedMinutesAmount = 1

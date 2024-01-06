@@ -18,6 +18,10 @@
 		86CB0B642B31C16D0013EB39 /* ButtonStyles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86CB0B632B31C16D0013EB39 /* ButtonStyles.swift */; };
 		86CB0B662B32F9B90013EB39 /* TimerProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86CB0B652B32F9B90013EB39 /* TimerProgressView.swift */; };
 		86CB0B692B32FACD0013EB39 /* Float+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86CB0B682B32FACD0013EB39 /* Float+Extension.swift */; };
+		86E831BC2B494A1E0073B02F /* WorkRestTimerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86E831BB2B494A1E0073B02F /* WorkRestTimerViewModel.swift */; };
+		86E831BE2B494A660073B02F /* TimerState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86E831BD2B494A660073B02F /* TimerState.swift */; };
+		86E831C02B494FE00073B02F /* StopwatchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86E831BF2B494FE00073B02F /* StopwatchView.swift */; };
+		86E831C22B494FFE0073B02F /* WorkRestTimerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86E831C12B494FFE0073B02F /* WorkRestTimerView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -33,6 +37,10 @@
 		86CB0B632B31C16D0013EB39 /* ButtonStyles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonStyles.swift; sourceTree = "<group>"; };
 		86CB0B652B32F9B90013EB39 /* TimerProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerProgressView.swift; sourceTree = "<group>"; };
 		86CB0B682B32FACD0013EB39 /* Float+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Float+Extension.swift"; sourceTree = "<group>"; };
+		86E831BB2B494A1E0073B02F /* WorkRestTimerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkRestTimerViewModel.swift; sourceTree = "<group>"; };
+		86E831BD2B494A660073B02F /* TimerState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerState.swift; sourceTree = "<group>"; };
+		86E831BF2B494FE00073B02F /* StopwatchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StopwatchView.swift; sourceTree = "<group>"; };
+		86E831C12B494FFE0073B02F /* WorkRestTimerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkRestTimerView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -90,6 +98,8 @@
 				86CB0B622B31C14F0013EB39 /* Buttons */,
 				86CB0B5B2B31B00A0013EB39 /* TimePickerPartView.swift */,
 				86CB0B602B31BE430013EB39 /* TimerView.swift */,
+				86E831BF2B494FE00073B02F /* StopwatchView.swift */,
+				86E831C12B494FFE0073B02F /* WorkRestTimerView.swift */,
 				86CB0B652B32F9B90013EB39 /* TimerProgressView.swift */,
 			);
 			path = Views;
@@ -99,7 +109,9 @@
 			isa = PBXGroup;
 			children = (
 				86CB0B5E2B31BDD50013EB39 /* TimerViewModel.swift */,
+				86E831BB2B494A1E0073B02F /* WorkRestTimerViewModel.swift */,
 				6F7134272B376DD900036496 /* StopwatchViewModel.swift */,
+				86E831BD2B494A660073B02F /* TimerState.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -192,12 +204,16 @@
 			files = (
 				86CB0B612B31BE430013EB39 /* TimerView.swift in Sources */,
 				86CB0B5F2B31BDD50013EB39 /* TimerViewModel.swift in Sources */,
+				86E831C22B494FFE0073B02F /* WorkRestTimerView.swift in Sources */,
+				86E831C02B494FE00073B02F /* StopwatchView.swift in Sources */,
 				6F7134282B376DD900036496 /* StopwatchViewModel.swift in Sources */,
 				86CB0B692B32FACD0013EB39 /* Float+Extension.swift in Sources */,
 				86CB0B662B32F9B90013EB39 /* TimerProgressView.swift in Sources */,
+				86E831BE2B494A660073B02F /* TimerState.swift in Sources */,
 				8671BFF52B307D8C00CE39D1 /* ContentView.swift in Sources */,
 				86CB0B642B31C16D0013EB39 /* ButtonStyles.swift in Sources */,
 				8671BFF32B307D8C00CE39D1 /* MyTimerApp.swift in Sources */,
+				86E831BC2B494A1E0073B02F /* WorkRestTimerViewModel.swift in Sources */,
 				86CB0B5C2B31B00A0013EB39 /* TimePickerPartView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

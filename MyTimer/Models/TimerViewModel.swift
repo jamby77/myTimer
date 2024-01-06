@@ -7,17 +7,7 @@
 
 import Foundation
 
-enum TimerState {
-    case active
-    case paused
-    case resumed
-    case canceled
-    case finished
-}
-
-
 class TimerViewModel: ObservableObject {
-    
     
     // MARK: Private properties
     private var timer = Timer()
