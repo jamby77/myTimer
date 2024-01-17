@@ -14,12 +14,17 @@ struct WorkRestTimerView: View {
     var controls: some View {
         HStack {
             switch model.state {
-            case .work, .rest, .resumed:
-                Button("Lap") {
-                    model.state = .canceled
+            case .work, .resumeWork:
+                Button("Rest") {
+                    model.state = .rest
                 }
                 .buttonStyle(CancelButtonStyle())
-            case .paused:
+            case .rest, .resumeRest:
+                Button("Work") {
+                    model.state = .rest
+                }
+                .buttonStyle(CancelButtonStyle())
+            case .pauseWork, .pauseRest:
                 Button("Reset") {
                     model.state = .canceled
                 }
@@ -34,13 +39,22 @@ struct WorkRestTimerView: View {
             Spacer()
             
             switch model.state {
-            case .work, .rest, .resumed:
+            case .work, .resumeWork:
                 Button("Pause") {
-                    model.state = .paused
+                    model.state = .pauseWork
                 }.buttonStyle(PauseButtonStyle())
-            case .paused:
+            case .rest, .resumeRest:
+                Button("Pause") {
+                    model.state = .pauseRest
+                }.buttonStyle(PauseButtonStyle())
+            case .pauseWork:
                 Button("Resume") {
-                    model.state = .resumed
+                    model.state = .resumeWork
+                }
+                .buttonStyle(StartButtonStyle())
+            case  .pauseRest:
+                Button("Resume") {
+                    model.state = .resumeRest
                 }
                 .buttonStyle(StartButtonStyle())
             case .canceled, .finished:
@@ -52,26 +66,39 @@ struct WorkRestTimerView: View {
         }
         .padding(.horizontal, 32)
     }
+
     var progressView: some View {
         VStack {
-            Text(model.elapsedTimeInSeconds.asTimestamp)
+            Text(model.displayTimeInMs.asTimestamp)
                 .monospacedDigit()
-                .font(.system(size: 60, weight: .semibold, design: .rounded))
+                .font(.system(size: 72, weight: .semibold, design: .monospaced))
+                .foregroundStyle(model.displayColor)
         }
         .padding()
     }
-    
+
+    var stageView: some View {
+        if model.state == .work || model.state == .resumeWork {
+           return Text("Work")
+                .font(.largeTitle)
+                .foregroundStyle(.green)
+        }
+        if model.state == .rest || model.state == .resumeRest {
+           return Text("Rest")
+                .font(.largeTitle)
+                .foregroundStyle(.orange)
+        }
+        return Text("Ready...")
+            .font(.largeTitle)
+    }
+
     var body: some View {
         ZStack {
             Color.black
                 .ignoresSafeArea()
             VStack {
-                if model.state == .canceled {
-                    progressView
-                } else {
-                    progressView
-                }
-                
+                stageView
+                progressView
                 controls
             }
             .frame(maxWidth: .infinity, maxHeight: .infinity)

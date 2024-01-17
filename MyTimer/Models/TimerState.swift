@@ -27,8 +27,10 @@ enum StopwatchState {
 enum WorkRestState {
     case work
     case rest
-    case paused
-    case resumed
+    case pauseWork
+    case pauseRest
+    case resumeWork
+    case resumeRest
     case canceled
     case finished
 }

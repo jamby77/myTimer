@@ -5,7 +5,7 @@
 //  Created by Petar Dzhambazov on 6.01.24.
 //
 
-import Foundation
+import SwiftUI
 
 class WorkRestTimerViewModel: ObservableObject {
     
@@ -16,7 +16,8 @@ class WorkRestTimerViewModel: ObservableObject {
     
     // MARK: Public properties
     // Powers the ProgressView
-    @Published var elapsedTimeInSeconds: Float = 0.0
+    @Published var elapsedTimeInMilliseconds: Int = 0
+    @Published var totalRestTimeInMilliseconds: Int = 0
     
     @Published var state: WorkRestState = .canceled {
         didSet {
@@ -24,30 +25,74 @@ class WorkRestTimerViewModel: ObservableObject {
             case .canceled, .finished:
                 // cancel timer and reset
                 timer.invalidate()
-                elapsedTimeInSeconds = 0.0
+                elapsedTimeInMilliseconds = 0
                 
             case .work:
-                // start timer
-                startTimer()
+                // start work timer
+                startWorkTimer()
             case .rest:
-                // start timer
-                startTimer()
-            case .paused:
+                // start rest timer
                 timer.invalidate()
-            case .resumed:
-                // Resumes the timer
-                startTimer()
+                startRestTimer(with: elapsedTimeInMilliseconds)
+            case .pauseWork, .pauseRest:
+                timer.invalidate()
+            case .resumeWork:
+                // Resumes work timer
+                startWorkTimer(with: elapsedTimeInMilliseconds)
+            case .resumeRest:
+                // resume rest timer
+                startRestTimer(with: totalRestTimeInMilliseconds)
             }
         }
     }
     
-    private func startTimer() {
+    
+    var displayTimeInMs: Int  {
+        switch state {
+        case .work, .pauseWork, .resumeWork:
+            elapsedTimeInMilliseconds
+        case .rest, .pauseRest, .resumeRest:
+            totalRestTimeInMilliseconds
+        case .canceled, .finished:
+            0
+        }
+    }
+    
+    var displayColor: Color  {
+        switch state {
+        case .work, .pauseWork, .resumeWork:
+            Color.green
+        case .rest, .pauseRest, .resumeRest:
+            Color.orange
+        case .canceled, .finished:
+            Color.black
+        }
+    }
+    
+    private func startRestTimer(with restTimeInMs: Int = 0) {
         startDate = Date.now
         timer = Timer.scheduledTimer(withTimeInterval: 0.1, repeats: true, block: { [weak self] _ in
             guard let self else { return }
-            let diff = Float(Date.now.timeIntervalSince(startDate))
+            let diff = Date.now.timeIntervalSince(startDate)
             
-            self.elapsedTimeInSeconds += diff
+//            self.secondsToCompletion -= 0.1
+            self.totalRestTimeInMilliseconds = restTimeInMs - Int(diff * 1000)
+            
+            if self.totalRestTimeInMilliseconds < 0 {
+                self.state = .finished
+            }
+//            print("diff: \(diff)", "time: \(totalRestTimeInMilliseconds)")
+        })
+    }
+    
+    private func startWorkTimer(with prevTimeInMs: Int = 0) {
+        startDate = Date.now
+        timer = Timer.scheduledTimer(withTimeInterval: 0.1, repeats: true, block: { [weak self] _ in
+            guard let self else { return }
+            let diff = Date.now.timeIntervalSince(startDate)
+            
+            self.elapsedTimeInMilliseconds = prevTimeInMs + Int(diff * 1000)
+//            print("diff: \(diff)", "time: \(elapsedTimeInMilliseconds)")
         })
     }
 }
