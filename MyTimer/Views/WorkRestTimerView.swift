@@ -8,8 +8,12 @@
 import SwiftUI
 
 struct WorkRestTimerView: View {
-    
+    @Environment(\.horizontalSizeClass) private var horizontalSizeClass
     @StateObject private var model = WorkRestTimerViewModel()
+    
+    private var progressSize: CGFloat {
+        horizontalSizeClass == .regular ? 120 : 72
+    }
     
     var controls: some View {
         HStack {
@@ -66,32 +70,34 @@ struct WorkRestTimerView: View {
         }
         .padding(.horizontal, 32)
     }
-
+    
     var progressView: some View {
-        VStack {
-            Text(model.displayTimeInMs.asTimestamp)
-                .monospacedDigit()
-                .font(.system(size: 72, weight: .semibold, design: .monospaced))
-                .foregroundStyle(model.displayColor)
-        }
-        .padding()
+        return Text(model.displayTimeInMs.asTimestamp)
+            .monospacedDigit()
+            .font(.system(
+                size: progressSize,
+                weight: .semibold,
+                design: .monospaced
+            ))
+            .foregroundStyle(model.displayColor)
+            .padding()
     }
-
+    
     var stageView: some View {
         if model.state == .work || model.state == .resumeWork {
-           return Text("Work")
+            return Text("Work")
                 .font(.largeTitle)
                 .foregroundStyle(.green)
         }
         if model.state == .rest || model.state == .resumeRest {
-           return Text("Rest")
+            return Text("Rest")
                 .font(.largeTitle)
                 .foregroundStyle(.orange)
         }
         return Text("Ready...")
             .font(.largeTitle)
     }
-
+    
     var body: some View {
         ZStack {
             Color.black

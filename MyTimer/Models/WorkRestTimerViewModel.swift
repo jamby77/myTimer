@@ -65,7 +65,7 @@ class WorkRestTimerViewModel: ObservableObject {
         case .rest, .pauseRest, .resumeRest:
             Color.orange
         case .canceled, .finished:
-            Color.black
+            Color.secondary
         }
     }
     
